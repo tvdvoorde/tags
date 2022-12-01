@@ -15,13 +15,8 @@ provider "azurerm" {
   oidc_request_url   = var.oidc_request_url
 }
 
-resource "azurerm_resource_group" "hub" {
-  name     = "rg-123"
-  location = "West Europe"
-}
-
-resource "azurerm_resource_group" "hub2" {
-  name     = "rg-456"
+resource "azurerm_resource_group" "taggroup1" {
+  name     = "rg-taggroup1"
   location = "West Europe"
 }
 
