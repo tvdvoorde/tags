@@ -32,3 +32,13 @@ terraform {
 resource "random_id" "server" {
   byte_length = 8
 }
+
+module "vnet" {
+  source              = "app.terraform.io/tedv1138/vnet/azurerm"
+  version             = "1.0.1"
+  name                = "vnet1"
+  resource_group_name = "rg-taggroup1"
+  location            = "westeurope"
+}
+  
+  
