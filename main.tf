@@ -27,7 +27,7 @@ resource "azurerm_resource_group" "hub2" {
 
 terraform {
   cloud {
-    organization = "tedv"
+    organization = "tedv1138"
     workspaces {
       name = "workspace1"
     }
