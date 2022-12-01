@@ -1,0 +1,29 @@
+name: 'deploy'
+
+on: workflow_dispatch
+
+env:
+  TF_TOKEN_app_terraform_io: ${{ secrets.TFE }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: 'checkout'
+      - name: 'init'
+        working-directory: tfe
+        run: |
+          terraform init
+      - name: 'plan'
+        working-directory: tfe      
+        run: |
+          terraform plan -var="oidc_request_token=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" -var="oidc_request_url=$ACTIONS_ID_TOKEN_REQUEST_URL"
+      - name: 'apply'
+        working-directory: tfe      
+        run: |
+          terraform apply -var="oidc_request_token=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" -var="oidc_request_url=$ACTIONS_ID_TOKEN_REQUEST_URL" -auto-approve
