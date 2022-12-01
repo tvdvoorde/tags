@@ -1,6 +1,8 @@
 variable "oidc_request_token" {}
 variable "oidc_request_url" {}
 variable "githubsha" {}
+variable "githubref" {}
+variable "githubrepositoryurl" {}
 
 provider "azurerm" {
   features {
@@ -36,11 +38,13 @@ resource "random_id" "server" {
 
 module "vnet" {
   source              = "app.terraform.io/tedv1138/vnet/azurerm"
-  version             = "1.0.3"
+  version             = "1.0.4"
   name                = "vnet2"
   resource_group_name = azurerm_resource_group.taggroup1.name
   location            = azurerm_resource_group.taggroup1.location
   githubsha           = var.githubsha
+  githubref           = var.githubref
+  githubrepositoryurl = var.githubrepositoryurl
 }
   
   
