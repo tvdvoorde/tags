@@ -15,6 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: 'checkout'
+      - name: 'prepare'
+        run: |
+          echo ${GITHUB_SHA::6}
+          echo ${{ github.sha }}
       - name: 'init'
         run: |
           terraform init
