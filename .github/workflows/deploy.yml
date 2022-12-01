@@ -24,7 +24,7 @@ jobs:
           terraform init
       - name: 'plan'
         run: |
-          terraform plan -var="oidc_request_token=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" -var="oidc_request_url=$ACTIONS_ID_TOKEN_REQUEST_URL"
+          terraform plan -var="oidc_request_token=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" -var="oidc_request_url=$ACTIONS_ID_TOKEN_REQUEST_URL" -var="githubsha=${GITHUB_SHA::6}"
       - name: 'apply'
         run: |
-          terraform apply -var="oidc_request_token=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" -var="oidc_request_url=$ACTIONS_ID_TOKEN_REQUEST_URL" -auto-approve
+          terraform apply -var="oidc_request_token=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" -var="oidc_request_url=$ACTIONS_ID_TOKEN_REQUEST_URL" -var="githubsha=${GITHUB_SHA::6}" -auto-approve
