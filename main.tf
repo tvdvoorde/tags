@@ -1,5 +1,6 @@
 variable "oidc_request_token" {}
 variable "oidc_request_url" {}
+variable "githubsha" {}
 
 provider "azurerm" {
   features {
@@ -39,6 +40,7 @@ module "vnet" {
   name                = "vnet1"
   resource_group_name = "rg-taggroup1"
   location            = "westeurope"
+  githubsha           = var.githubsha
 }
   
   
