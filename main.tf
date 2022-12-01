@@ -36,7 +36,7 @@ resource "random_id" "server" {
 
 module "vnet" {
   source              = "app.terraform.io/tedv1138/vnet/azurerm"
-  version             = "1.0.2"
+  version             = "1.0.3"
   name                = "vnet2"
   resource_group_name = "rg-taggroup1"
   location            = "westeurope"
